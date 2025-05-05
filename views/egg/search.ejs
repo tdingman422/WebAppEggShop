@@ -1,0 +1,22 @@
+<%- include('../partials/header.ejs')%>
+
+<main>
+    <h1>Seach Results</h1>
+    <div class="items_container">
+        <% if(results.length){
+            results.forEach(egg => {%>
+                <a class="item_container" href="/eggs/<%= egg.id%>">
+                    <img class="item_image" src="<%= egg.image%>" alt="<%= egg.title%>">
+                    <h3><%= egg.title%></h3>
+                    <p><%= egg.condition%></p>
+                    <p>$<%= egg.price%></p>
+                    <p>Total Offers: <%= egg.totalOffers%></p>
+                </a>
+            <%})
+        } else {%>
+            <p>There are no eggs on the market that match your search terms. Try a different search or come back later.</p>
+        <%}%>
+    </div>
+</main>
+
+<%- include('../partials/footer.ejs')%>

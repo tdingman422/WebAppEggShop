@@ -1,0 +1,22 @@
+<%- include('../partials/header.ejs')%>
+
+<main>
+    <h1>Market</h1>
+    <div class="items_container">
+        <% if(eggs.length){
+            eggs.forEach(egg => {%>
+                <a class="item_container" href="/eggs/<%= egg.id%>">
+                    <img class="item_image" src="<%= egg.image%>" alt="<%= egg.title%>">
+                    <h3><%= egg.title%></h3>
+                    <p><%= egg.condition%></p>
+                    <p>$<%= egg.price%></p>
+                    <p>Total Offers: <%= egg.totalOffers%></p>
+                </a>
+            <%})
+        } else {%>
+            <p>There are no eggs on the market.</p>
+        <%}%>
+    </div>
+</main>
+
+<%- include('../partials/footer.ejs')%>

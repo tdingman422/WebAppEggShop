@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Egg Shop</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body <% if(errorMessages.length > 0 || successMessages.length > 0){%>style="grid-template-rows: 50px 50px 1fr 30px;"<%}%>>
+    <header>
+        <a href="/"><img src="/images/egg.webp" alt="egg" height="50" width="50"></a>
+        <a href="/"><h1>Egg Shop</h1></a>
+        <form action="/eggs/search" method="GET">
+            <input class="searchbar" type="search" placeholder="Search" name="search">
+        </form>
+        <nav>
+            <ul>
+                <li><a href='/eggs/'>Browse</a></li>
+                <li><a href='/eggs/new'>Sell</a></li>
+                <% if(!user){%>
+                <li><a href='/users/signup'>Sign Up</a></li>
+                <li><a href='/users/login'>Login</a></li>
+                <%} else {%>
+                <li><a href='/users/'>Profile</a></li>
+                <li><a href='/users/logout'>Logout</a></li>
+                <%}%>
+            </ul>
+        </nav>
+    </header>
+
+    <% if(errorMessages.length > 0) {%>
+        <% errorMessages.forEach(message=>{%>
+            <div class='error'>
+                <%=message%>
+            </div>
+        <%});%>
+    <%}%>
+    
+    <% if(successMessages.length > 0) {%>
+        <% successMessages.forEach(message=>{%>
+            <div class='success'>
+                <%=message%>
+            </div>
+        <%});%>
+    <%}%>

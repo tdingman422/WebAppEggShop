@@ -1,0 +1,28 @@
+<%- include('../partials/header.ejs')%>
+
+<main>
+    <div>
+        <h2>Offers</h2>
+        <div class="listingsTable">
+            <div>Buyer</div><div>Amount</div>
+            <% if(egg.active) {%>
+                <div>Action</div>
+            <%} else {%>
+                <div>Status</div>
+            <%}%>
+            <% offers.forEach(offer => { %>
+                <div><%= offer.offerer.firstName + " " + offer.offerer.lastName%></div>
+                <div>$<%= offer.amount%></div>
+                <% if(offer.egg.active) {%>
+                    <form class="buttonForm">
+                        <button type="submit" formmethod="POST" formaction="/eggs/<%= offer.egg.id%>/offers/<%= offer.id%>?_method=PUT">Accept</button>
+                    </form>
+                <%} else {%>
+                    <div><%= offer.status%></div>
+                <%}%>
+            <%})%>
+        </div>
+    </div>
+</main>
+
+<%- include('../partials/footer.ejs')%>

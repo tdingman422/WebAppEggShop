@@ -1,0 +1,21 @@
+<%- include('../partials/header.ejs')%>
+
+<main class="row_main">
+    <div>
+        <h2>Buy and Sell on Egg Shop</h2>
+        <p>Fill out the form to the right and create an account!</p>
+    </div>
+    <form class="itemform" action="/users" method="POST">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName" required>
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <input type="submit">
+    </form>
+</main>
+
+<%- include('../partials/footer.ejs')%>

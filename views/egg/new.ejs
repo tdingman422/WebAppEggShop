@@ -1,0 +1,29 @@
+<%- include('../partials/header.ejs')%>
+
+<main class="row_main">
+    <div>
+        <h2>Sell on Egg Shop</h2>
+        <p>Fill out the form to the right and your egg will be posted!</p>
+    </div>
+    <form class="itemform" action="/eggs" method="POST" enctype="multipart/form-data">
+        <label for="condition">Condition</label>
+        <select id="condition" name="condition">
+            <option value="Good">Good</option>
+            <option value="Great">Great</option>
+            <option value="New">New</option>
+            <option value="Bad">Bad</option>
+            <option value="Other">Other</option>
+        </select>
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" required>
+        <label for="price">Price</label>
+        <input type="number" id="price" name="price" step="0.01" required>
+        <label for="details">Details</label>
+        <textarea name="details" id="details" required></textarea>
+        <label for="picture">Image</label>
+        <input type="file" id="image" name="image" required>
+        <input type="submit">
+    </form>
+</main>
+
+<%- include('../partials/footer.ejs')%>

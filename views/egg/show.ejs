@@ -1,0 +1,26 @@
+<%- include('../partials/header.ejs')%>
+
+<main class="row_main">
+    <img class="showImage" src="<%= egg.image%>" alt="<%= egg.title%>">
+    <div>
+        <h2><%= egg.title%></h2>
+        <p><%= egg.condition%></p>
+        <p>$<%= egg.price%></p>
+        <p><%= egg.details%></p>
+        <p>Offers: <%= egg.totalOffers%></p>
+        <p>Seller: <%= egg.seller.firstName + ' ' + egg.seller.lastName%></p>
+        <% if(egg.active) {%>
+            <form action="/eggs/<%= egg.id%>/offers/new" method="POST">
+                <input type="number" name="amount" min="0.01" step="0.01" required>
+                <input type="submit" value="Make An Offer">
+            </form>
+            <% if(egg.totalOffers > 0){%>
+                <p>Highest Offer: <%= egg.highestOffer%></p>
+            <%}
+        } else {%>
+            <p>This egg is no longer available.</p>
+        <%}%>
+    </div>
+</main>
+
+<%- include('../partials/footer.ejs')%>

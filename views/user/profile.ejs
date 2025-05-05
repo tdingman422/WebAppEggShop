@@ -1,0 +1,40 @@
+<%- include('../partials/header.ejs')%>
+
+<main>
+    <div>
+        <h2>Hello, <%= user.firstName + ' ' + user.lastName%></h2>
+        <h3><%= user.firstName%>'s Eggs</h3>
+        <div class="listingsTable">
+            <div>Egg</div><div>Status</div><div>Action</div>
+            <% if(eggs.length > 0){ eggs.forEach(egg => {%>
+                <a href="/eggs/<%= egg.id%>/"><%= egg.title%></a>
+                <% if(egg.active) {%>
+                    <div>Active</div>
+                <%} else {%>
+                    <div>Inactive</div>
+                <%}%>
+                <div>
+                    <form class="buttonForm">
+                        <button type="submit" formmethod="GET" formaction="/eggs/<%= egg.id%>/edit">Edit</button>
+                        <button type="submit" formmethod="POST" formaction="/eggs/<%= egg.id%>?_method=DELETE">Delete</button>
+                        <% if (egg.totalOffers > 0) {%>
+                            <button type="submit" formmethod="GET" formaction="/eggs/<%= egg.id%>/offers">View Offers</button>
+                        <%}%>
+                    </form>
+                </div>
+            <%})}%>
+        </div>
+
+        <h3><%= user.firstName%>'s Offers</h3>
+        <div class="listingsTable">
+            <div>Egg</div><div>Status</div><div>Amount</div>
+            <% if(offers.length > 0){ offers.forEach(offer => {%>
+                <a href="/eggs/<%= offer.egg.id%>/"><%= offer.egg.title%></a>
+                <div><%= offer.status%></div>
+                <div>$<%= offer.amount%></div>
+            <%})}%>
+        </div>
+    </div>
+</main>
+
+<%- include('../partials/footer.ejs')%>
